@@ -21,7 +21,7 @@ showBottom = false;
 showLid = true;
 
 // show arduino board
-showArd = true;
+showArd = false;
 
 // show the shield
 showShield = true;
@@ -285,13 +285,14 @@ module shield() {
     pin_headers(1, 8);
   
   // LEDs
-  translate([79.38, 54.61, 1.6 + 1.5])
+  //translate([79.38, 54.61, 1.6 + 1.5])
+  translate([80.64, 54.61, 1.6 + 1.5])
     led(5, "blue", legs = false);
 
-  translate([79.38, 46.35, 1.6 + 1.5])
+  translate([80.64, 46.35, 1.6 + 1.5])
     led(5, "red", legs = false);
   
-  translate([79.38, 38.10, 1.6 + 1.5])
+  translate([80.64, 38.10, 1.6 + 1.5])
     led(5, "green", legs = false);
   
   // headers
@@ -304,7 +305,7 @@ module shield() {
     pin_headers(2, 5);
   
   
-  //  28 pin DIL
+  //  28 pin ZIF
   translate([11.43, 12.06, 1.7])
     zif28();
   /*
@@ -312,7 +313,7 @@ module shield() {
     rotate([0, 0, 90])
     pdip(28, 2.54, socketed = true, w = inch(0.4));
   */
-  // 20 pin DIL
+  // 20 pin ZIF
   translate([21.59, 35.56, 1.7])
     zif20();
   /*
@@ -321,7 +322,7 @@ module shield() {
     pdip(20, 2.54, socketed = true, w = inch(0.3));
   */
   // 8 pin DIL
-  translate([74.3 + 3 * 2.54 / 2, 5.08 + 2.54 * 1.5, 1.7])
+  translate([74.3 + 2.54 * 1.5, 5.08 + 2.54 * 1.5, 1.7])
     rotate([0, 0, 0])
     pdip(8, 2.54, socketed = true, w = inch(0.3));
 
@@ -336,7 +337,7 @@ module zif28() {
   
   radius = 3;
   
-  translate([2.54 * 6.5, 2.54 * 2, 11.9 / 2])
+  translate([2.54 * 6.5 - 2, 2.54 * 2, 11.9 / 2])
     union() {
     color("lightgreen")
       difference() {
@@ -376,11 +377,11 @@ module zif28() {
 	cylinder(h = 5, r1 = 2, r2 = 2, center = true, $fn = roundness);
     }
     
-    translate([0, 0, -11.9 / 2])
+    translate([2, 0, -11.9 / 2]) // legs under ZIF
       rotate([0, 0, 90])
       pdip(28, 2.54, socketed = false, w = inch(0.4));
     
-    translate([0, 0, 11.9 / 2])
+    translate([2, 0, 11.9 / 2]) // DIP on ZIF
       rotate([0, 0, 90])
       pdip(28, 2.54, socketed = false, w = inch(0.3));
     
@@ -391,7 +392,7 @@ module zif20() {
   
   radius = 3;
   
-  translate([2.54 * 4.5, 2.54 * 1.5, 11.9 / 2])
+  translate([2.54 * 4.5 - 2, 2.54 * 1.5, 11.9 / 2])
     union() {
     color("lightgreen")
       difference() {
@@ -431,11 +432,11 @@ module zif20() {
 	cylinder(h = 5, r1 = 2, r2 = 2, center = true, $fn = roundness);
     }
     
-    translate([0, 0, -11.9 / 2])
+    translate([2, 0, -11.9 / 2])
       rotate([0, 0, 90])
       pdip(20, 2.54, socketed = false, w = inch(0.3));
     
-    translate([0, 0, 11.9 / 2])
+    translate([2, 0, 11.9 / 2])
       rotate([0, 0, 90])
       pdip(20, 2.54, socketed = false, w = inch(0.3));
     
@@ -484,55 +485,72 @@ module lid() {
     // openings in the lid
     lidOpenings();
   }
-  
 }
 
 module lidOpenings() {
   xOffset = casWallThick + extraWidthL;
-  yOffset = casWallThick + extraDepthD - 0.35;
+  yOffset = casWallThick + extraDepthD + 0.35;
   
   // zif 28
-  translate([xOffset + 0.86 - 0.5 + 1, yOffset + 8.26 - 0.5 + 1, 0])
+  translate([xOffset + 25.4, 
+  yOffset + 15.88, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cube([50.5 + 2, 15 + 2, lidThick + lidInset]);
+    cube([50.5 + 2, 15 + 2, lidThick + lidInset], center = true);
   
   // zif 20
-  translate([xOffset + 10.53 - 0.5 + 1.5, yOffset + 31.75 - 0.25, 0])
+  translate([xOffset + 31.115, 
+  yOffset + 39.37, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cube([40.2 + 2, 15 + 2, lidThick + lidInset]);
+    cube([40.2 + 2, 15 + 2, lidThick + lidInset], center = true);
   
   // 8-pin DIL
-  translate([xOffset + 74.3 - 2.5, yOffset + 5.71 - 2.25, 0])
+  translate([xOffset + 78.11, 
+  yOffset + 8.89, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cube([10.16 + 2, 10.16 + 2, lidThick + lidInset]);
+    cube([10.16 + 2, 10.16 + 2, lidThick + lidInset], center = true);
   
   // 6 pin header
-  translate([xOffset + 59.69 - 2.25, yOffset + 13.97 - 2.25, 0])
+  translate([xOffset + 60.96, 
+  yOffset + 15.88, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cube([2.54 * 2 + 2, 2.54 * 3 + 2, lidThick + lidInset]);
+    cube([2.54 * 2 + 2, 2.54 * 3 + 2, lidThick + lidInset], center = true);
   
   // 10 pin header
-  translate([xOffset + 59.69 - 2.25, yOffset + 29.21 - 2.25, 0])
+  translate([xOffset + 60.96, 
+  yOffset + 33.66, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cube([2.54 * 2 + 2, 2.54 * 5 + 2, lidThick + lidInset]);
+    cube([2.54 * 2 + 2, 2.54 * 5 + 2, lidThick + lidInset], center = true);
   
-  // green LED
-  translate([xOffset + 79.38 - 0.15, yOffset + 38.10 + 0.7, 0])
+  // blue LED
+  translate([xOffset + 80.64, 
+  yOffset + 54.61, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, $fn = roundness);
+    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
   
   // red LED
-  translate([xOffset + 79.38 - 0.15, yOffset + 46.35 + 0.7, 0])
+  translate([xOffset + 80.64, 
+  yOffset + 46.35, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, $fn = roundness);
+    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
   
-  // blu LED
-  translate([xOffset + 79.38 - 0.15, yOffset + 54.61 + 0.7, 0])
+  // green LED
+  translate([xOffset + 80.64, 
+  yOffset + 38.1, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, $fn = roundness);
+    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
 
   // capacitor
-  translate([xOffset + 20.95 - 0.1, yOffset + 4.17 + 0.7, 0])
+  translate([xOffset + 20.95, 
+  yOffset + 4.17, 
+  (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
-    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, $fn = roundness);
+    cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
 }
