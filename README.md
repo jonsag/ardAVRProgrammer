@@ -89,3 +89,8 @@ Programmer -> AVRISP mkII
 17 -> 26 -> PC3 -> Analog input 3  
 18 -> 27 -> PC4 -> Analog input 4  
 19 -> 28 -> PC5 -> Analog input 5
+
+## Resources
+[Breadboard @gammon.com](http://www.gammon.com.au/breadboard) (excellent!)  
+[nickgammon arduino sketches @github](https://github.com/nickgammon/arduino_sketches)  
+[Alternative Atmega bootloader programmer @gammon.com](http://www.gammon.com.au/forum/?id=11635)  
