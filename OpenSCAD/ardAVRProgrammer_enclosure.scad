@@ -20,10 +20,8 @@ print = true;
 showBottom = false;
 showLid = true;
 
-// show arduino board
-showArd = false;
-
-// show the shield
+// show arduino board and shield
+showArd = true;
 showShield = true;
 
 // make the hole for the arduino power input
@@ -121,7 +119,7 @@ if ((showArd) && (!print)) {
  }
 
 if ((showShield) && (!print)) {
-  translate([0, 0.35, 18.9])
+  translate([0.45, 0.35, 17.9])
     shield();
  }
 
@@ -267,7 +265,7 @@ module shield() {
     color("green")
     cube([86.36, 58.42, 1.6]);
   
-  // pin headers connectiong to Arduino
+  // pin headers connecting to Arduino
   translate([28.57 - 2.54, 3.17 - 2.54, 0])
     rotate([180, 0, 90])
     pin_headers(1, 8);
@@ -296,11 +294,11 @@ module shield() {
     led(5, "green", legs = false);
   
   // headers
-  translate([59.69 - 2.54 / 2, 13.34 - 2.54 / 2, 0])
+  translate([59.69 - 2.54 / 2, 13.34 - 2.54 / 2, 2.54 / 2 + 0.4])
     rotate([0, 0, 0])
     pin_headers(2, 3);
   
-  translate([59.69 - 2.54 / 2, 28.57 - 2.54 / 2, 0])
+  translate([59.69 - 2.54 / 2, 28.57 - 2.54 / 2, 2.54 / 2 + 0.4])
     rotate([0, 0, 0])
     pin_headers(2, 5);
   
@@ -488,60 +486,60 @@ module lid() {
 }
 
 module lidOpenings() {
-  xOffset = casWallThick + extraWidthL;
-  yOffset = casWallThick + extraDepthD + 0.35;
+  xOffset = casWallThick + extraWidthL + 0.4;
+  yOffset = casWallThick + extraDepthD + 0.3;
   
   // zif 28
-  translate([xOffset + 25.4, 
+  translate([xOffset + 26.04 + 0.2, 
   yOffset + 15.88, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([50.5 + 2, 15 + 2, lidThick + lidInset], center = true);
   
   // zif 20
-  translate([xOffset + 31.115, 
+  translate([xOffset + 30.795, 
   yOffset + 39.37, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([40.2 + 2, 15 + 2, lidThick + lidInset], center = true);
   
   // 8-pin DIL
-  translate([xOffset + 78.11, 
-  yOffset + 8.89, 
+  translate([xOffset + 78.11 - 1, 
+  yOffset + 8.89 - 0.9 + 1, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([10.16 + 2, 10.16 + 2, lidThick + lidInset], center = true);
   
   // 6 pin header
-  translate([xOffset + 60.96, 
-  yOffset + 15.88, 
+  translate([xOffset + 60.96 - 1, 
+  yOffset + 15.88 - 0.5, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([2.54 * 2 + 2, 2.54 * 3 + 2, lidThick + lidInset], center = true);
   
   // 10 pin header
-  translate([xOffset + 60.96, 
-  yOffset + 33.66, 
+  translate([xOffset + 60.96 - 1, 
+  yOffset + 33.66 - 0.5, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([2.54 * 2 + 2, 2.54 * 5 + 2, lidThick + lidInset], center = true);
   
   // blue LED
-  translate([xOffset + 80.64, 
+  translate([xOffset + 80.64 - 1.9, 
   yOffset + 54.61, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
   
   // red LED
-  translate([xOffset + 80.64, 
+  translate([xOffset + 80.64 - 1.9, 
   yOffset + 46.35, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
   
   // green LED
-  translate([xOffset + 80.64, 
+  translate([xOffset + 80.64 - 1.9, 
   yOffset + 38.1, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
