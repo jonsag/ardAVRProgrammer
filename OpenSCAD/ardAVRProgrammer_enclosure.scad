@@ -486,68 +486,68 @@ module lid() {
 }
 
 module lidOpenings() {
-  xOffset = casWallThick + extraWidthL + 0.4;
-  yOffset = casWallThick + extraDepthD + 0.3;
+  xOffset = casWallThick + extraWidthL; // + 0.4;
+  yOffset = casWallThick + extraDepthD; // + 0.3;
   
   // zif 28
-  translate([xOffset + 26.04 + 0.2, 
-  yOffset + 15.88, 
+  translate([xOffset + 26.04 + 0.6, 
+  yOffset + 16.18, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([50.5 + 2, 15 + 2, lidThick + lidInset], center = true);
   
   // zif 20
-  translate([xOffset + 30.795, 
-  yOffset + 39.37, 
+  translate([xOffset + 30.795 + 0.4, 
+  yOffset + 39.37 + 0.3, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([40.2 + 2, 15 + 2, lidThick + lidInset], center = true);
   
   // 8-pin DIL
-  translate([xOffset + 78.11 - 1, 
-  yOffset + 8.89 - 0.9 + 1, 
+  translate([xOffset + 78.11 - 0.6, 
+  yOffset + 8.89 + 0.4, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([10.16 + 2, 10.16 + 2, lidThick + lidInset], center = true);
   
   // 6 pin header
-  translate([xOffset + 60.96 - 1, 
-  yOffset + 15.88 - 0.5, 
+  translate([xOffset + 60.96 - 0.6, 
+  yOffset + 15.88 - 0., 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([2.54 * 2 + 2, 2.54 * 3 + 2, lidThick + lidInset], center = true);
   
   // 10 pin header
-  translate([xOffset + 60.96 - 1, 
-  yOffset + 33.66 - 0.5, 
+  translate([xOffset + 60.96 - 0.6, 
+  yOffset + 33.66 - 0.2, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cube([2.54 * 2 + 2, 2.54 * 5 + 2, lidThick + lidInset], center = true);
   
   // blue LED
-  translate([xOffset + 80.64 - 1.9, 
-  yOffset + 54.61, 
+  translate([xOffset + 80.64 - 1.5, 
+  yOffset + 54.61 + 0.3, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
   
   // red LED
-  translate([xOffset + 80.64 - 1.9, 
-  yOffset + 46.35, 
+  translate([xOffset + 80.64 - 1.5, 
+  yOffset + 46.35 + 0.3, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
   
   // green LED
-  translate([xOffset + 80.64 - 1.9, 
-  yOffset + 38.1, 
+  translate([xOffset + 80.64 - 1.5, 
+  yOffset + 38.1 + 0.3, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
 
   // capacitor
-  translate([xOffset + 20.95, 
-  yOffset + 4.17, 
+  translate([xOffset + 20.95 + 0.4, 
+  yOffset + 4.17 + 0.3, 
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
