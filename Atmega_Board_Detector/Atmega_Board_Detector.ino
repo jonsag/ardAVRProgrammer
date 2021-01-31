@@ -4,7 +4,7 @@
 // Version: 1.20
 
 // Version 1.1 added signatures for Attiny24/44/84 (5 May 2012)
-// Version 1.2 added signatures for ATmeag8U2/16U2/32U2 (7 May 2012)
+// Version 1.2 added signatures for ATmega8U2/16U2/32U2 (7 May 2012)
 // Version 1.3: Added signature for ATmega1284P (8 May 2012)
 // Version 1.4: Output an 8 MHz clock on pin 9
 // Version 1.5: Corrected flash size for Atmega1284P.
@@ -374,7 +374,7 @@ void getSignature ()
       }  // end of signature found
     }  // end of for each signature
 
-  Serial.println (F("Unrecogized signature."));
+  Serial.println (F("Unrecognized signature."));
   }  // end of getSignature
 
 void getFuseBytes ()

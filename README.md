@@ -1,7 +1,9 @@
 # ardATProgrammer
+
 Some code and a shield for programming ATMega328 and ATtiny85
 
 ## Additional Boards Managers URL
+
 Insert these URLs in File -> Preferences -> Settings tab  
 
 >https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json  
@@ -15,60 +17,71 @@ Then install boards in Tools -> Board -> Boards manager...
 >ATmega 168P/328P Boards  
 >Barebones ATmega Chips (no bootloader)  
 
-
 ## Burn bootloader, settings
 
-### ATtiny85 
+### ATtiny85
+
 Board -> ATtiny Microcontrollers -> ATtiny 25/45/85  
 Processor -> ATtiny85  
-Clock -> ... 
+Clock -> ...  
 Programmer -> Arduino as ISP  
 
 ### ATtiny2313
+
 Board -> ATtiny MCUs -> ATtiny2313/4313  
 Micro -> ATtiny2313 @ ...  
 Programmer -> Arduino as ISP
+
 ### ATmega328P
+
 Board -> Atmega168/328 -> Atmega168/328  
 Micro -> ATmega328P @ ... w/Arduino as ISP
 
 ### ATmega328
+
 No solution to burn bootloader at the moment  
 
-## Program AVR, setttings
+## Program AVR, settings
 
-### ATtiny85 
+### ATtiny85
+
 Board -> ATtiny Microcontrollers -> ATtiny 25/45/85  
 Processor -> ATtiny85  
-Clock -> ... 
-Programmer -> AVRISP mkII
+Clock -> ...  
+Programmer -> Arduino as ISP
 
 ### ATtiny2313
+
 Board -> ATtiny MCUs -> ATtiny2313/4313  
 Micro -> ATtiny2313 @ ...  
 Programmer -> AVRISP mkII
+
 ### ATmega328P
+
 Board -> Atmega168/328 -> Atmega168/328  
 Micro -> ATmega328P @ ... w/Arduino as ISP
 
 ### ATmega328
+
 Board -> ATmega Microcontrollers -> ATmega328/328P  
 Processor -> ATmega328  
-Clock -> ... 
+Clock -> ...  
 Programmer -> AVRISP mkII
 
 ## Pin Mapping, Arduino IDE -> AVR
 
-### Arduino code -> ATtiny85 pin number -> Pin	name ->	Function
-0 -> 5 -> PB0 ->  
-1 -> 6 -> PB1 ->  
-2 -> 7 -> PB2 ->  
-3 -> 2 -> PB3 ->  
-4 -> 3 -> PB4 ->  
-5 -> 1 -> PB5 -> RESET  
+### Arduino code -> ATtiny85 pin number -> Pin name -> Function
+
+0 -> 5 -> PB0 -> (PWM, AIN0)  
+1 -> 6 -> PB1 -> (PWM, AIN1)  
+2 -> 7 -> PB2 -> (ADC1)  
+3 -> 2 -> PB3 -> (ADC3)  
+4 -> 3 -> PB4 -> (ADC2)  
+5 -> 1 -> PB5 -> (RESET, ADC0)  
 
 ### Arduino code -> ATmega328 pin number -> Pin name -> Function
-  -> 1 -> PC6 -> RESET  
+
+  -> 1 -> PC6 -> (RESET)  
 0 -> 2 -> PD0 -> Digital pin 0 (Rx)  
 1 -> 3 -> PD1 -> Digital pin 1 (Tx)  
 2 -> 4 -> PD2 -> Digital pin 2  
@@ -88,9 +101,61 @@ Programmer -> AVRISP mkII
 16 -> 25 -> PC2 -> Analog input 2  
 17 -> 26 -> PC3 -> Analog input 3  
 18 -> 27 -> PC4 -> Analog input 4  
-19 -> 28 -> PC5 -> Analog input 5
+19 -> 28 -> PC5 -> Analog input 5  
 
+## Atmega_Board_Programmer
+
+### attiny85@16MHz internal
+
+#### Before bootburning
+
+>Signature = 0x1E 0x93 0x0B  
+>Processor = ATtiny85  
+>Flash memory size = 8192 bytes.  
+>LFuse = 0x62  
+>HFuse = 0xDF  
+>EFuse = 0xFF  
+>Lock byte = 0xFF  
+>Clock calibration = 0x91  
+>No bootloader support.  
+>  
+>First 256 bytes of program memory:  
+>  
+>00: 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF ...  
+
+#### After bootburning
+
+>Signature = 0x1E 0x93 0x0B  
+>Processor = ATtiny85  
+>Flash memory size = 8192 bytes.  
+>LFuse = 0xF1  
+>HFuse = 0xDF  
+>EFuse = 0xFF  
+>Lock byte = 0xFF  
+>Clock calibration = 0x86  
+>No bootloader support.  
+>  
+>First 256 bytes of program memory:  
+>  
+>00: 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF ...  
+
+#### After programming
+
+>Signature = 0x1E 0x93 0x0B  
+>Processor = ATtiny85  
+>Flash memory size = 8192 bytes.  
+>LFuse = 0xF1  
+>HFuse = 0xDF  
+>EFuse = 0xFF  
+>Lock byte = 0xFF  
+>Clock calibration = 0x86  
+>No bootloader support.  
+>  
+>First 256 bytes of program memory:  
+>  
+>00: 0x23 0xC0 0x32 0xC0 0x31 0xC0 0x30 0xC0 ...  
 ## Resources
+
 [Breadboard @gammon.com](http://www.gammon.com.au/breadboard) (excellent!)  
 [nickgammon arduino sketches @github](https://github.com/nickgammon/arduino_sketches)  
 [Alternative Atmega bootloader programmer @gammon.com](http://www.gammon.com.au/forum/?id=11635)  
