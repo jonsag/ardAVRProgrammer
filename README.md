@@ -6,9 +6,9 @@ Some code and a shield for programming ATMega328 and ATtiny85
 
 Insert these URLs in File -> Preferences -> Settings tab  
 
->https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json  
->http://www.leonardomiliani.com/repository/package_leonardomiliani.com_index.json  
->https://raw.githubusercontent.com/carlosefr/atmega/master/package_carlosefr_atmega_index.json  
+>damellis: [https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json](https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json)  
+>leonardomilliani: [http://www.leonardomiliani.com/repository/package_leonardomiliani.com_index.json](http://www.leonardomiliani.com/repository/package_leonardomiliani.com_index.json)  
+>carlosefr: [https://raw.githubusercontent.com/carlosefr/atmega/master/package_carlosefr_atmega_index.json](https://raw.githubusercontent.com/carlosefr/atmega/master/package_carlosefr_atmega_index.json)  
 
 Then install boards in Tools -> Board -> Boards manager...  
 
@@ -34,8 +34,14 @@ Programmer -> Arduino as ISP
 
 ### ATmega328P
 
+Board -> Arduino AVR Boards -> Arduino Duemilanove or or Diecimila  
+Processor -> ATmega 328P  
+Programmer -> Arduino as AVR  
+
+or  
+
 Board -> Atmega168/328 -> Atmega168/328  
-Micro -> ATmega328P @ ... w/Arduino as ISP
+Micro -> ATmega328P @ ... w/Arduino as ISP  
 
 ### ATmega328
 
@@ -54,7 +60,7 @@ Programmer -> Arduino as ISP
 
 Board -> ATtiny MCUs -> ATtiny2313/4313  
 Micro -> ATtiny2313 @ ...  
-Programmer -> AVRISP mkII
+Programmer -> Arduino as ISP
 
 ### ATmega328P
 
@@ -66,7 +72,7 @@ Micro -> ATmega328P @ ... w/Arduino as ISP
 Board -> ATmega Microcontrollers -> ATmega328/328P  
 Processor -> ATmega328  
 Clock -> ...  
-Programmer -> AVRISP mkII
+Programmer -> Arduino as ISP
 
 ## Pin Mapping, Arduino IDE -> AVR
 
@@ -154,6 +160,63 @@ Programmer -> AVRISP mkII
 >First 256 bytes of program memory:  
 >  
 >00: 0x23 0xC0 0x32 0xC0 0x31 0xC0 0x30 0xC0 ...  
+
+### ATmega328P as 'ATmega328/328P'  
+
+#### After bootburning  
+
+>Signature = 0x1E 0x95 0x0F  
+>Processor = ATmega328P  
+>Flash memory size = 32768 bytes.  
+>LFuse = 0xFF  
+>HFuse = 0xDF  
+>EFuse = 0xFD  
+>Lock byte = 0xCF  
+>Clock calibration = 0xA5  
+>Bootloader in use: No  
+>EEPROM preserved through erase: No  
+>Watchdog timer always on: No  
+>Bootloader is 512 bytes starting at 7E00  
+>  
+>Bootloader:  
+>  
+>7E00: 0x11 0x24 0x84 0xB7 0x14 0xBE 0x81 0xFF ...  
+>...  
+>MD5 sum of bootloader = 0xFB 0xF4 0x9B 0x7B 0x59 0x73 0x7F 0x65 0xE8 0xD0 0xF8 0xA5 0x08 0x12 0xE7 0x9F  
+>Bootloader name: optiboot_atmega328  
+>  
+>First 256 bytes of program memory:  
+>  
+>00: 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF ...  
+
+### ATmega328P as 'Arduino Duemilanove or Diecemila'
+
+#### After bootburning
+
+>Signature = 0x1E 0x95 0x0F  
+>Processor = ATmega328P  
+>Flash memory size = 32768 bytes.  
+>LFuse = 0xFF  
+>HFuse = 0xDA  
+>EFuse = 0xFD  
+>Lock byte = 0xCF  
+>Clock calibration = 0xA5  
+>Bootloader in use: Yes  
+>EEPROM preserved through erase: No  
+>Watchdog timer always on: No  
+>Bootloader is 2048 bytes starting at 7800  
+>  
+>Bootloader:  
+>  
+>7800: 0x0C 0x94 0x34 0x3C 0x0C 0x94 0x51 0x3C ...  
+>...  
+>MD5 sum of bootloader = 0x0A 0xAC 0xF7 0x16 0xF4 0x3C 0xA2 0xC9 0x27 0x7E 0x08 0xB9 0xD6 0x90 0xBC 0x02  
+>Bootloader name: ATmegaBOOT_168_atmega328  
+>  
+>First 256 bytes of program memory:  
+>  
+>00: 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF ...  
+
 ## Resources
 
 [Breadboard @gammon.com](http://www.gammon.com.au/breadboard) (excellent!)  
