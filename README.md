@@ -45,7 +45,10 @@ Micro -> ATmega328P @ ... w/Arduino as ISP
 
 ### ATmega328
 
-No solution to burn bootloader at the moment  
+Board -> ATmega Microcontrollers -> ATmega328/328P  
+Processor -> ATmega328  
+Clock -> ...  
+Programmer -> Arduino as ISP  
 
 ## Program AVR, settings
 
