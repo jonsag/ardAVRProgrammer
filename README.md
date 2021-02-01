@@ -67,6 +67,12 @@ Programmer -> Arduino as ISP
 
 ### ATmega328P
 
+Board -> Arduino AVR Boards -> Arduino Duemilanove or or Diecimila  
+Processor -> ATmega 328P  
+Programmer -> Arduino as AVR  
+
+or  
+
 Board -> Atmega168/328 -> Atmega168/328  
 Micro -> ATmega328P @ ... w/Arduino as ISP
 
