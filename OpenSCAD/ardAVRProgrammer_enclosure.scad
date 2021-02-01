@@ -15,14 +15,19 @@ include <../../myCAD/OpenSCADlibraries/led.scad>
 include <../../myCAD/OpenSCADlibraries/NopSCADlib/vitamins/dip.scad>
 
 // lay out for printing
-print = true;
+print = false;
 
-showBottom = false;
-showLid = true;
+showBottom = true;
+showLid = false;
 
 // show arduino board and shield
 showArd = true;
 showShield = true;
+
+// shield type
+// 0: no shield
+// 1: ardAVRProgrammer
+shieldType = 0;
 
 // make the hole for the arduino power input
 powHole = false;
@@ -49,12 +54,12 @@ ardHeight = 10.9 + 1.6;
 // casing
 casWallThick = 1.5;
 
-extraWidthL = 1;
-extraWidthR = 18.5;
-extraDepthD = 6.5;
-extraDepthU = 12;
+extraWidthL = shieldType == 0 ? 2 : (shieldType == 1 ? 1 : 5 );
+extraWidthR = shieldType == 0 ? 2 : (shieldType == 1 ? 18.5 : 5 );
+extraDepthD = shieldType == 0 ? 6 : (shieldType == 1 ? 6.5 : 5 );
+extraDepthU = shieldType == 0 ? 6 : (shieldType == 1 ? 12 : 5 );
 
-extraHeight = 5;
+extraHeight = shieldType == 0 ? 2 : (shieldType == 1 ? 5 : 5 );
 
 // casing lid
 lidInset = 2;
@@ -110,7 +115,7 @@ dropPos = [[casXL + casWallThick,
             casYU - casWallThick, 
             postsY - lidScrewHoleDepth * 1.5]];
 
-////////// the drawing
+////////// the drawing //////////
 
 if ((showArd) && (!print)) {
   translate([0, 53.3, soBotHeight + soTopHeight])
@@ -118,10 +123,12 @@ if ((showArd) && (!print)) {
     arduinoUno();
  }
 
-if ((showShield) && (!print)) {
-  translate([0.45, 0.35, 17.9])
-    shield();
- }
+if ((showShield) && (!print) && (shieldType)) {
+  if (shieldType == 1) {
+    translate([0.45, 0.35, 17.9])
+      shieldType1();
+  }
+}
 
 union() {
   if (showBottom) {
@@ -135,10 +142,20 @@ if (showLid) {
   if (print) {
     rotate([180, 0, 0])
       translate([0, 30, 0])
-      lid();
+      difference() {
+        lid();
+        if (shieldType == 1) {
+          lidOpeningsType1();
+        }
+      }
   } else {
     translate([0, 0, soBotHeight + soTopHeight + ardHeight + extraHeight])
+    difference() {
       lid();
+      if (shieldType == 1) {
+        lidOpeningsType1();
+      }
+    }
   }
  }
 
@@ -260,7 +277,7 @@ module pin_headers(cols, rows) {
   }
 }
 
-module shield() {
+module shieldType1() {
   translate([0, 0, 0]) // PCB
     color("green")
     cube([86.36, 58.42, 1.6]);
@@ -465,7 +482,6 @@ module lid() {
 		ardDepth + extraDepthD + extraDepthU + casWallThick * 2 -casWallThick * 2 - lidRidgeWidth * 2 - tolerance * 2, 
 		lidInset - tolerance]);
       }
-      //lidOpenings(); 
     }
     
     // screw holes
@@ -479,16 +495,15 @@ module lid() {
 		 r1 = lidHoleDia / 2, r2 = lidHoleDia / 2, 
 		 center = true, $fn = roundness);
     }
-    
-    // openings in the lid
-    lidOpenings();
   }
 }
 
-module lidOpenings() {
+module lidOpeningsType1() {
   xOffset = casWallThick + extraWidthL; // + 0.4;
   yOffset = casWallThick + extraDepthD; // + 0.3;
   
+  translate([-extraWidthL - casWallThick, -extraDepthD - casWallThick, 0])
+  union() {
   // zif 28
   translate([xOffset + 26.04 + 0.6, 
   yOffset + 16.18, 
@@ -551,4 +566,5 @@ module lidOpenings() {
   (lidThick + lidInset) / 2 - lidInset + tolerance])
     color("red")
     cylinder(h = lidThick + lidInset, r1 = 3, r2 = 3, center = true, $fn = roundness);
+  }
 }
