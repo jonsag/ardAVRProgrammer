@@ -1,0 +1,26 @@
+{
+    "cSpell.ignoreWords": [
+        "Amplificar",
+        "Bohn",
+        "CLKPR",
+        "Carduino",
+        "HWVER",
+        "INSYNC",
+        "Pmode",
+        "SPCR",
+        "SPDR",
+        "SPIF",
+        "SPSR",
+        "SWMAJ",
+        "SWMIN",
+        "TCCR",
+        "avrch",
+        "breply",
+        "eeprompoll",
+        "eepromsize",
+        "hbdelta",
+        "hbval",
+        "hilo",
+        "phenoptix"
+    ]
+}

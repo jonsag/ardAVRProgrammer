@@ -18,7 +18,7 @@ include <../../myCAD/OpenSCADlibraries/NopSCADlib/vitamins/dip.scad>
 print = false;
 
 showBottom = true;
-showLid = false;
+showLid = true;
 
 // show arduino board and shield
 showArd = true;

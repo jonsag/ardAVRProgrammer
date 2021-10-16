@@ -154,8 +154,10 @@ Programmer -> AVRISP mkII
 >First 256 bytes of program memory:  
 >  
 >00: 0x23 0xC0 0x32 0xC0 0x31 0xC0 0x30 0xC0 ...  
+
 ## Resources
 
 [Breadboard @gammon.com](http://www.gammon.com.au/breadboard) (excellent!)  
 [nickgammon arduino sketches @github](https://github.com/nickgammon/arduino_sketches)  
 [Alternative Atmega bootloader programmer @gammon.com](http://www.gammon.com.au/forum/?id=11635)  
+[Phenoptix @github](https://github.com/phenoptix/AVRISP)
