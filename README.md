@@ -170,8 +170,6 @@ Programmer -> Arduino as ISP
 >  
 >00: 0x23 0xC0 0x32 0xC0 0x31 0xC0 0x30 0xC0 ...  
 
-<<<<<<< HEAD
-=======
 ### ATmega328P as 'Arduino Duemilanove or Diecimila'
 
 #### After bootburning
@@ -307,7 +305,6 @@ Programmer -> Arduino as ISP
 >  
 >00: 0x0C 0x94 0x5C 0x00 0x0C 0x94 0x6E 0x00 ...  
 
->>>>>>> 88f27d49a103124e31c41f741f47773f16810be9
 ## Resources
 
 [Breadboard @gammon.com](http://www.gammon.com.au/breadboard) (excellent!)  
