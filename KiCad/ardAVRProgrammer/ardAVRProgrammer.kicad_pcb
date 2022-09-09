@@ -5,6 +5,12 @@
   )
 
   (paper "A4")
+  (title_block
+    (title "ardAVRProgrammer")
+    (date "2022-09-09")
+    (rev "0.2")
+  )
+
   (layers
     (0 "F.Cu" signal)
     (31 "B.Cu" signal)
@@ -1305,7 +1311,7 @@
   (gr_arc (start 172.72 66.04) (mid 174.148657 66.968745) (end 174.703172 68.58) (layer "Edge.Cuts") (width 0.05) (tstamp f250d85e-836d-405d-851d-efc108e81140))
   (gr_arc (start 174.625 118.11) (mid 173.881051 119.906051) (end 172.085 120.65) (layer "Edge.Cuts") (width 0.05) (tstamp feef94fc-e3bf-4689-a6ae-ea1b62fe8410))
   (gr_line (start 174.703172 69.215) (end 174.703172 68.58) (layer "Edge.Cuts") (width 0.05) (tstamp ffc0dd81-6545-4072-a180-ff312a2476b5))
-  (gr_text "ardAVRProgrammer\nDesign: Jon Sagebrand\ngithub.com/jonsag" (at 93.345 70.485 90) (layer "B.SilkS") (tstamp ff3a60fb-3954-4053-8f61-060bd82e5377)
+  (gr_text "${TITLE}-${REVISION}\nDesign: Jon Sagebrand\ngithub.com/jonsag" (at 93.345 70.485 90) (layer "F.SilkS") (tstamp ff3a60fb-3954-4053-8f61-060bd82e5377)
     (effects (font (size 1.524 1.524) (thickness 0.2032)) (justify left mirror))
   )
 

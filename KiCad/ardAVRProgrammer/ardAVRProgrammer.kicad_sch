@@ -4,6 +4,12 @@
 
   (paper "A4")
 
+  (title_block
+    (title "ardAVRProgrammer")
+    (date "2022-09-09")
+    (rev "0.2")
+  )
+
   (lib_symbols
     (symbol "Device:C_Polarized" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
@@ -1936,8 +1942,8 @@
     (pin "2" (uuid 88ae6964-cdcd-4844-80f5-56db2ae889c1))
     (pin "20" (uuid 1c50ad4b-9cd9-4862-85bd-c37d2dc8bcfe))
     (pin "21" (uuid 4874a5b5-d924-45e3-8ddb-ce15a5afc084))
-    (pin "22" (uuid b1873c77-da7a-4c4c-8039-51752bc76e98))
-    (pin "22" (uuid b1873c77-da7a-4c4c-8039-51752bc76e98))
+    (pin "22" (uuid b1873c77-da7a-4c4c-8039-51752bc76e99))
+    (pin "22" (uuid b1873c77-da7a-4c4c-8039-51752bc76e99))
     (pin "23" (uuid ccdb4492-2bac-4f88-94f6-8846679cb875))
     (pin "24" (uuid e13e53d1-86d9-41a2-8f2d-62a790127166))
     (pin "25" (uuid 6a39d43d-2897-49e4-99d9-df2c1570c57f))
